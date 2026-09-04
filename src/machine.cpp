@@ -168,9 +168,9 @@ static std::array<float, 6> inverse(Vec3 toolPosition, Vec3 orientation) {
     const Arr2 ball_0_position{BALL_2DPOS_0_X, BALL_2DPOS_0_Y};
     const Arr2 ball_1_position{BALL_2DPOS_1_X, BALL_2DPOS_1_Y};
     const Arr2 ball_2_position{BALL_2DPOS_2_X, BALL_2DPOS_2_Y};
-    const Arr2 slot_0_normal{-sin(RAIL_ANGLE_0 / 180 * M_PI), cos(RAIL_ANGLE_0 / 180 * M_PI)};
-    const Arr2 slot_1_normal{-sin(RAIL_ANGLE_1 / 180 * M_PI), cos(RAIL_ANGLE_1 / 180 * M_PI)};
-    const Arr2 slot_2_normal{-sin(RAIL_ANGLE_2 / 180 * M_PI), cos(RAIL_ANGLE_2 / 180 * M_PI)};
+    const Arr2 slot_0_normal{-sinf(RAIL_ANGLE_0 / 180 * M_PI), cosf(RAIL_ANGLE_0 / 180 * M_PI)};
+    const Arr2 slot_1_normal{-sinf(RAIL_ANGLE_1 / 180 * M_PI), cosf(RAIL_ANGLE_1 / 180 * M_PI)};
+    const Arr2 slot_2_normal{-sinf(RAIL_ANGLE_2 / 180 * M_PI), cosf(RAIL_ANGLE_2 / 180 * M_PI)};
     const Arr4 constraint_0{slot_0_normal[0], slot_0_normal[1], 0, 0};
     const Arr4 constraint_1{slot_1_normal[0], slot_1_normal[1], 0, -dot(ball_1_position - ball_0_position, slot_1_normal)};
     const Arr4 constraint_2{slot_2_normal[0], slot_2_normal[1], 0, -dot(ball_2_position - ball_0_position, slot_2_normal)};
