@@ -6,6 +6,12 @@ For more details, refer to the [project page](https://xavierchermain.github.io/p
 
 ![Teaser image](data/images/teaser.png)
 
+## Replicability
+
+This code has received the Graphics replicability stamp.
+
+[![](https://www.replicabilitystamp.org/logo/Reproducibility-small.png)](http://www.replicabilitystamp.org#https-github-com-iota97-atomslicer)
+
 
 ## Building
 

@@ -273,10 +273,11 @@ void TriPhasor::initLayers(size_t i, const std::vector<float> &sdf, const std::v
     if (objective == NormalField::Objective::SupportFree) {
         float angle = acosf(fabsf(grid.getData(i)->normal.dot(gradSDF(i, sdf, grid))));
         setFrozen(grid.getData(i)->flags, angle < M_PI/8 && isBoundary && curvatureSDF(i, sdf, grid) < 0.1);
+        grid.getData(i)->phase[2] = 2.0f*M_PI*(sdf[i]/layerHeight+0.5f) * (grid.getData(i)->normal.dot(gradSDF(i, sdf, grid)) > 0 ? 1 : -1);
     } else {
         setFrozen(grid.getData(i)->flags, (region == Region::Top || region == Region::Bottom || (grid.getPosition(i).z < cellDiag && theta < 0.1)) && curvatureSDF(i, sdf, grid) < 0.1);
+        grid.getData(i)->phase[2] = 2.0f*M_PI*(sdf[i]/layerHeight+0.5f) * (region == Region::Top ? 1 : -1);
     }
-    grid.getData(i)->phase[2] = 2.0f*M_PI*(sdf[i]/layerHeight+0.5f) * (region == Region::Top ? 1 : -1);
 }
 
 void TriPhasor::initTangents(size_t i, const std::vector<float> &sdf, const std::vector<Vec3> &normals, GridHierarchy<Data> &grid, float layerHeight, float maxTopAngle, float maxBottomAngle, NormalField::Objective objective) {

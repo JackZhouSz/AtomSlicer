@@ -36,7 +36,7 @@ void Infill::generate(SDF &sdf, Type type, float depositionWidth) {
             float infillSDF = std::min(std::min(fromCenterX, fromCenterY), fromCenterZ);
             sdf.getField()[i] = std::min(std::max(inputSDF, infillSDF), hollowSDF);
         } else if (type == Type::Gyroid) {
-            Vec3 q = 0.5f*sdf.getPosition(i);
+            Vec3 q = 0.5f*sdf.getPosition(i)/depositionWidth*0.6f;
             float x = q.x, y = q.y, z = q.z; 
             float f = sin(x)*cos(y) + sin(y)*cos(z) + sin(z)*cos(x);
             Vec3 g = Vec3(cos(x)*cos(y)-sin(z)*sin(x), cos(y)*cos(z)-sin(x)*sin(y), cos(z)*cos(x)-sin(y)*sin(z));
